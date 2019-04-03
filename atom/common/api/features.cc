@@ -41,6 +41,10 @@ bool IsPrintingEnabled() {
   return BUILDFLAG(ENABLE_PRINTING);
 }
 
+bool IsPictureInPictureEnabled() {
+  return BUILDFLAG(ENABLE_PICTURE_IN_PICTURE);
+}
+
 bool IsComponentBuild() {
 #if defined(COMPONENT_BUILD)
   return true;
@@ -63,6 +67,7 @@ void Initialize(v8::Local<v8::Object> exports,
   dict.SetMethod("isViewApiEnabled", &IsViewApiEnabled);
   dict.SetMethod("isTtsEnabled", &IsTtsEnabled);
   dict.SetMethod("isPrintingEnabled", &IsPrintingEnabled);
+  dict.SetMethod("isPictureInPictureEnabled", &IsPictureInPictureEnabled);
   dict.SetMethod("isComponentBuild", &IsComponentBuild);
 }
 
