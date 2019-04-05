@@ -6,7 +6,6 @@ The Electron team is currently undergoing an initiative to convert separate gett
 
 * `app` module
   * `badgeCount`
-  * `name`
   * `dock`
     * `badge`
 * `autoUpdater` module
@@ -58,3 +57,4 @@ The Electron team is currently undergoing an initiative to convert separate gett
 * `app` module
   * `accessibilitySupport`
   * `applicationMenu`
+  * `name`

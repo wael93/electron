@@ -684,11 +684,15 @@ to the npm modules spec. You should usually also specify a `productName`
 field, which is your application's full capitalized name, and which will be
 preferred over `name` by Electron.
 
+**[Deprecated Soon](modernization/property-updates.md)**
+
 ### `app.setName(name)`
 
 * `name` String
 
 Overrides the current application's name.
+
+**[Deprecated Soon](modernization/property-updates.md)**
 
 ### `app.getLocale()`
 
@@ -1064,6 +1068,7 @@ gpuDevice:
 machineModelName: 'MacBookPro',
 machineModelVersion: '11.5' }
 ```
+
 Using `basic` should be preferred if only basic information like `vendorId` or `driverId` is needed.
 
 ### `app.setBadgeCount(count)` _Linux_ _macOS_
@@ -1375,3 +1380,12 @@ A `Boolean` property that returns  `true` if the app is packaged, `false` otherw
 [Squirrel-Windows]: https://github.com/Squirrel/Squirrel.Windows
 [JumpListBeginListMSDN]: https://msdn.microsoft.com/en-us/library/windows/desktop/dd378398(v=vs.85).aspx
 [about-panel-options]: https://developer.apple.com/reference/appkit/nsapplication/1428479-orderfrontstandardaboutpanelwith?language=objc
+
+### `app.name`
+
+A `String` property that indicates the current application's name, which is the name in the application's `package.json` file.
+
+Usually the `name` field of `package.json` is a short lowercased name, according
+to the npm modules spec. You should usually also specify a `productName`
+field, which is your application's full capitalized name, and which will be
+preferred over `name` by Electron.

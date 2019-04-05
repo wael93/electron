@@ -1334,8 +1334,10 @@ void App::BuildPrototype(v8::Isolate* isolate,
       .SetMethod("focus", base::Bind(&Browser::Focus, browser))
       .SetMethod("getVersion", base::Bind(&Browser::GetVersion, browser))
       .SetMethod("setVersion", base::Bind(&Browser::SetVersion, browser))
-      .SetMethod("getName", base::Bind(&Browser::GetName, browser))
-      .SetMethod("setName", base::Bind(&Browser::SetName, browser))
+      .SetMethod("_getName", base::Bind(&Browser::GetName, browser))
+      .SetMethod("_setName", base::Bind(&Browser::SetName, browser))
+      .SetProperty("name", base::Bind(&Browser::GetName, browser),
+                   base::Bind(&Browser::SetName, browser))
       .SetMethod("isReady", base::Bind(&Browser::is_ready, browser))
       .SetMethod("whenReady", base::Bind(&Browser::WhenReady, browser))
       .SetMethod("addRecentDocument",
