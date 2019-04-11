@@ -49,7 +49,6 @@
 #include "services/device/public/mojom/constants.mojom.h"
 #include "services/network/public/cpp/features.h"
 #include "services/service_manager/public/cpp/connector.h"
-#include "third_party/blink/renderer/platform/runtime_enabled_features.h"
 #include "ui/base/idle/idle.h"
 #include "ui/base/material_design/material_design_controller.h"
 #include "ui/base/ui_base_switches.h"
