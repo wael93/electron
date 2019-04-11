@@ -15,6 +15,7 @@ In sandboxed renderers the `process` object contains only a subset of the APIs:
 - `hang()`
 - `getCreationTime()`
 - `getHeapStatistics()`
+- `getBlinkMemoryInfo()`
 - `getProcessMemoryInfo()`
 - `getSystemMemoryInfo()`
 - `getSystemVersion()`
@@ -169,6 +170,16 @@ Returns `Object`:
 * `doesZapGarbage` Boolean
 
 Returns an object with V8 heap statistics. Note that all statistics are reported in Kilobytes.
+
+### `process.getBlinkMemoryInfo()`
+
+Returns `Object`:
+
+* `allocated` Integer
+* `marked` Integer
+* `total` Integer
+
+Returns an object with blink memory information. Note that all values are reported in Kilobytes.
 
 ### `process.getProcessMemoryInfo()`
 
