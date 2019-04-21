@@ -9,6 +9,7 @@
 #include <utility>
 #include <vector>
 
+#include "atom/browser/browser.h"
 #include "atom/browser/native_window.h"
 #include "atom/browser/web_view_manager.h"
 #include "atom/common/native_mate_converters/value_converter.h"
@@ -124,10 +125,6 @@ WebContentsPreferences::WebContentsPreferences(
   SetDefaultBoolIfUndefined(options::kNodeIntegrationInWorker, false);
   SetDefaultBoolIfUndefined(options::kDisableHtmlFullscreenWindowResize, false);
   SetDefaultBoolIfUndefined(options::kWebviewTag, false);
-  SetDefaultBoolIfUndefined(options::kSandbox, false);
-  SetDefaultBoolIfUndefined(options::kNativeWindowOpen, false);
-  SetDefaultBoolIfUndefined(options::kEnableRemoteModule, true);
-  SetDefaultBoolIfUndefined(options::kContextIsolation, false);
   SetDefaultBoolIfUndefined(options::kJavaScript, true);
   SetDefaultBoolIfUndefined(options::kImages, true);
   SetDefaultBoolIfUndefined(options::kTextAreasAreResizable, true);
@@ -146,6 +143,18 @@ WebContentsPreferences::WebContentsPreferences(
   SetDefaultBoolIfUndefined(options::kScrollBounce, false);
 #endif
   SetDefaultBoolIfUndefined(options::kOffscreen, false);
+
+  if (Browser::Get()->secure_mode_enabled()) {
+    SetDefaultBoolIfUndefined(options::kSandbox, true);
+    SetDefaultBoolIfUndefined(options::kContextIsolation, true);
+    SetDefaultBoolIfUndefined(options::kNativeWindowOpen, true);
+    SetDefaultBoolIfUndefined(options::kEnableRemoteModule, false);
+  } else {
+    SetDefaultBoolIfUndefined(options::kSandbox, false);
+    SetDefaultBoolIfUndefined(options::kNativeWindowOpen, false);
+    SetDefaultBoolIfUndefined(options::kContextIsolation, false);
+    SetDefaultBoolIfUndefined(options::kEnableRemoteModule, true);
+  }
 
   // If this is a <webview> tag, and the embedder is offscreen-rendered, then
   // this WebContents is also offscreen-rendered.
@@ -267,15 +276,17 @@ void WebContentsPreferences::AppendCommandLineSwitches(
     command_line->AppendSwitch(
         ::switches::kEnableExperimentalWebPlatformFeatures);
 
+  bool secure_mode_enabled = Browser::Get()->secure_mode_enabled();
+
   // Check if we have node integration specified.
-  if (IsEnabled(options::kNodeIntegration))
+  if (!secure_mode_enabled && IsEnabled(options::kNodeIntegration))
     command_line->AppendSwitch(switches::kNodeIntegration);
 
   // Whether to enable node integration in Worker.
-  if (IsEnabled(options::kNodeIntegrationInWorker))
+  if (!secure_mode_enabled && IsEnabled(options::kNodeIntegrationInWorker))
     command_line->AppendSwitch(switches::kNodeIntegrationInWorker);
 
-  // Check if webview tag creation is enabled, default to nodeIntegration value.
+  // Check if webview tag creation is enabled.
   if (IsEnabled(options::kWebviewTag))
     command_line->AppendSwitch(switches::kWebviewTag);
 

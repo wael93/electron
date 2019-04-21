@@ -42,6 +42,8 @@ ipcMain.on('bootstrap', (event) => {
 })
 
 async function createWindow () {
+  app.enableSecureMode()
+
   await app.whenReady()
 
   const options: Electron.BrowserWindowConstructorOptions = {
@@ -50,10 +52,7 @@ async function createWindow () {
     autoHideMenuBar: true,
     backgroundColor: '#FFFFFF',
     webPreferences: {
-      preload: path.resolve(__dirname, 'preload.js'),
-      contextIsolation: true,
-      sandbox: true,
-      enableRemoteModule: false
+      preload: path.resolve(__dirname, 'preload.js')
     },
     useContentSize: true,
     show: false
