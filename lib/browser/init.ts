@@ -44,7 +44,7 @@ if (process.platform === 'win32') {
 // Don't quit on fatal error.
 process.on('uncaughtException', function (error) {
   // Do nothing if the user has a custom uncaught exception handler.
-  if (process.listeners('uncaughtException').length > 1) {
+  if (process.listenerCount('uncaughtException') > 1) {
     return
   }
 
