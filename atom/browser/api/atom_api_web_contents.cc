@@ -2068,13 +2068,10 @@ v8::Local<v8::Value> WebContents::GetLastWebPreferences(
 }
 
 bool WebContents::IsRemoteModuleEnabled() const {
-  if (web_contents()->GetVisibleURL().SchemeIs("chrome-devtools")) {
-    return false;
-  }
   if (auto* web_preferences = WebContentsPreferences::From(web_contents())) {
     return web_preferences->IsRemoteModuleEnabled();
   }
-  return true;
+  return false;
 }
 
 v8::Local<v8::Value> WebContents::GetOwnerBrowserWindow() const {
