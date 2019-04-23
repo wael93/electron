@@ -39,7 +39,12 @@ Take a look at 5.0.0 Timeline [blog post](https://electronjs.org/blog/electron-5
 | Tue, 2019-Jun-18 | 6.0.0-beta.x | |
 | Tue, 2019-Jun-25 | 6.0.0-beta.x | |
 | Tue, 2019-Jul-02 | 6.0.0-beta.x | |
-| Tue, 2019-Jul-09 | 6.0.0-beta.x | 🚧 quiet period - stable prep 🚧 |
-| Thu, 2019-Jul-18 | 6.0.0 | ✨ stable ✨ |
+| Tue, 2019-Jul-09 | 6.0.0-beta.x | |
+| Tue, 2019-Jul-16 | 6.0.0-beta.x | |
+| Tue, 2019-Jul-23 | 6.0.0-beta.x | 🚧 quiet period - stable prep 🚧 |
+| Tue, 2019-Jul-30 | 6.0.0-beta.x | ✨ stable ✨ |
 
-*Includes: Chromium M75 and Node v12.0*
+*Includes: Chromium M76 and Node v12.0*
+
+## 7.0.0 Release Schedule
+TBD
