@@ -15,6 +15,7 @@
 #include "atom/common/atom_command_line.h"
 #include "atom/common/native_mate_converters/file_path_converter.h"
 #include "atom/common/node_includes.h"
+#include "atom/common/trace_events.h"
 #include "base/base_paths.h"
 #include "base/command_line.h"
 #include "base/environment.h"
@@ -205,6 +206,7 @@ base::FilePath::StringType NodeBindings::GetHelperResourcesPath() {
 }
 
 void NodeBindings::Initialize() {
+  TRACE_ELECTRON0("NodeBindings::Initialize");
   // Open node's error reporting system for browser process.
   node::g_standalone_mode = browser_env_ == BROWSER;
   node::g_upstream_node_mode = false;
